@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garnett Trading - Coming Soon</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('https://images.unsplash.com/photo-1505142468610-359e7d316be0?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: white;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.2);
+        }
+
+        .logo {
+            position: absolute;
+            top: 30px;
+            left: 30px;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px 25px;
+            font-size: 20px;
+            font-weight: 600;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            text-align: center;
+            padding: 20px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+        }
+
+        .signup-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 50px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .signup-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 15px 20px;
+            font-size: 16px;
+            border: none;
+            border-radius: 0;
+            background: white;
+            color: #333;
+        }
+
+        .signup-form input::placeholder {
+            color: #999;
+        }
+
+        .signup-form button {
+            padding: 15px 40px;
+            font-size: 16px;
+            font-weight: 600;
+            background: #000;
+            color: white;
+            border: none;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: background 0.3s;
+        }
+
+        .signup-form button:hover {
+            background: #333;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator::after {
+            content: '↓';
+            color: white;
+            font-size: 24px;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Footer Section */
+        .footer {
+            background: #000;
+            color: white;
+            padding: 80px 30px 120px;
+            text-align: center;
+        }
+
+        .footer-section {
+            margin-bottom: 60px;
+        }
+
+        .footer-section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 30px;
+            letter-spacing: 1px;
+        }
+
+        .footer-section p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 0 auto;
+            color: #ccc;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            line-height: 2.5;
+            color: #ccc;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .social-icon:hover {
+            opacity: 0.7;
+        }
+
+        .chat-button {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #4A90E2;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1000;
+            transition: background 0.3s;
+        }
+
+        .chat-button:hover {
+            background: #357ABD;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .logo {
+                top: 20px;
+                left: 20px;
+                padding: 12px 20px;
+                font-size: 18px;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+                margin-bottom: 30px;
+            }
+
+            .signup-form {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .signup-form input {
+                min-width: 100%;
+                width: 100%;
+            }
+
+            .signup-form button {
+                width: 100%;
+            }
+
+            .footer {
+                padding: 60px 20px 100px;
+            }
+
+            .footer-section h2 {
+                font-size: 2rem;
+            }
+
+            .footer-section p,
+            .contact-info {
+                font-size: 1rem;
+            }
+
+            .chat-button {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .logo {
+                font-size: 16px;
+                padding: 10px 15px;
+            }
+
+            .footer-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="logo">Garnett Trading</div>
+        <div class="hero-content">
+            <h1>We're Coming Soon</h1>
+            <form class="signup-form" onsubmit="event.preventDefault(); alert('Thank you! We\'ll notify you when we\'re live.');">
+                <input type="email" placeholder="Be the first to know when we're live!" required>
+                <button type="submit">Notify Me!</button>
+            </form>
+        </div>
+        <div class="scroll-indicator" onclick="document.querySelector('.footer').scrollIntoView({ behavior: 'smooth' });"></div>
+    </section>
+
+    <!-- Footer Section -->
+    <section class="footer">
+        <div class="footer-section">
+            <h2>About</h2>
+            <p>We are passionate about creating exceptional trading experiences. Our mission is to provide innovative solutions and build lasting relationships with our clients. We believe in the power of creativity, dedication, and excellence in everything we do.</p>
+        </div>
+
+        <div class="footer-section">
+            <h2>Be in Touch</h2>
+            <div class="contact-info">
+                <p>1099 Folsom Street<br>San Francisco, CA 94103</p>
+                <p>hello@garnetttrading.com</p>
+                <p>415-456-7890</p>
+            </div>
+            <div class="social-icons">
+                <a href="#" class="social-icon" aria-label="Twitter">𝕏</a>
+                <a href="#" class="social-icon" aria-label="Facebook">f</a>
+                <a href="#" class="social-icon" aria-label="Instagram">📷</a>
+            </div>
+        </div>
+    </section>
+
+    <button class="chat-button" onclick="alert('Chat feature coming soon!')">Let's Chat</button>
+</body>
+</html>
+
